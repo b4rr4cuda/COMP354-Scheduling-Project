@@ -23,7 +23,6 @@
 #include <cstring>
 
 #include "task.h"
-#include "list.h"
 #include "schedulers.h"
 
 #define SIZE    100

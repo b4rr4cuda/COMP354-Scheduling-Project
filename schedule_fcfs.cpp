@@ -15,11 +15,11 @@
  * @param burst Burst time of the task
  */
 void Scheduler::add(const char *name, const int priority, const int burst) {
-    Task* t = new Task;
+    Task* t = new Task; // freed in schedule()!
     t->name = strdup(name); // make a deep copy for safety
     t->priority = priority;
     t->burst = burst;
-    insert(&head, t);
+    tasks.push_back(t); // FCFS: add to the back of the list
 }
 
 /**
@@ -27,10 +27,13 @@ void Scheduler::add(const char *name, const int priority, const int burst) {
  */
 void Scheduler::schedule() {
     std::cout << "FCFS Scheduler running!" << std::endl;
-    struct node* temp = head;
-    while (temp != nullptr) {
-        run(temp->task, temp->task->burst); // FCFS: run full burst
-        temp = temp->next;
+    while (!tasks.empty()) {
+        Task* t = tasks.front(); // get the first-in task
+        run(t, t->burst);        // FCFS: run full burst
+        tasks.pop_front();       // remove from the list
+
+        free(t->name);
+        delete t;
     }
 }
 

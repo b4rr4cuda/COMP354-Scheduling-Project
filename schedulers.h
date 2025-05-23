@@ -1,30 +1,30 @@
 /**
- * @file schedulers.h
+* @file schedulers.h
  * @brief Header file for schedulers
  * THIS FILE IS ADAPTED FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/schedulers.h
  * BY
  * - Including #pragma once
  * - Using a singleton class pattern
+ * - Replacing C linked list with std::list<Task*>
  * (consulted https://www.geeksforgeeks.org/singleton-pattern-c-design-patterns/ for
  * singleton pattern)
- *
  */
 
 #pragma once
 #define MIN_PRIORITY 1
 #define MAX_PRIORITY 10
 
+#include <list>
 #include "task.h"
-#include "list.h"
 
 /**
  * @class Scheduler
- * @brief Singleton scheduler class for managing tasks
+ * @brief Singleton scheduler class for managing tasks using std::list
  */
 class Scheduler {
 public:
-    // Delete the copy constructor and assignment operator
+    // Delete copy constructor and assignment operator
     Scheduler(const Scheduler&) = delete;
     Scheduler& operator=(const Scheduler&) = delete;
 
@@ -51,7 +51,6 @@ public:
     void schedule();
 
 private:
-    Scheduler() : head(nullptr) {} // private constructor
-
-    struct node* head;
+    Scheduler() = default; // private constructor
+    std::list<Task*> tasks{};
 };
