@@ -12,11 +12,11 @@
  * @param priority Priority of the task
  * @param burst Burst time of the task
  */
-void add(char *name, int priority, int burst) {}
+void Scheduler::add(const char *name, const int priority, const int burst){}
 
 /**
  * @brief Invoke the scheduler
  */
-void schedule() {
+void Scheduler::schedule() {
     std::cout << "SJF Scheduler running!" << std::endl;
 }

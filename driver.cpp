@@ -73,7 +73,7 @@ int main(const int argc, char *argv[])
         int priority = atoi(priority_str);
         int burst = atoi(burst_str);
 
-        add(name, priority, burst);
+        Scheduler::getInstance().add(name, priority, burst);
 
         free(temp);
     }
@@ -81,7 +81,7 @@ int main(const int argc, char *argv[])
     fclose(in);
 
     // invoke the scheduler
-    schedule();
+    Scheduler::getInstance().schedule();
 
     return 0;
 }

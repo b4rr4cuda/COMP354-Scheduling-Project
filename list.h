@@ -5,9 +5,13 @@
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/list.h
  * BY:
  * - renaming delete to del as delete is reserved!
+ * - Added anti-name mangling
  * list data structure containing the tasks in the system
  */
 #pragma once
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "task.h"
 
@@ -20,3 +24,7 @@ struct node {
 void insert(struct node **head, Task *task);
 void del(struct node **head, Task *task);
 void traverse(struct node *head);
+
+#ifdef __cplusplus
+}
+#endif
