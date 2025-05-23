@@ -3,4 +3,8 @@ project(COMP354_Scheduling_Project)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(COMP354_Scheduling_Project main.cpp)
+add_executable(fcfs driver.cpp schedule_fcfs.cpp task.h)
+add_executable(sjf driver.cpp schedule_sjf.cpp task.h)
+add_executable(rr driver.cpp schedule_rr.cpp task.h)
+add_executable(priority driver.cpp schedule_priority.cpp task.h)
+add_executable(priority_rr driver.cpp schedule_priority_rr.cpp task.h)
