@@ -1,4 +1,6 @@
 /**
+ * @file list.h
+ * @brief List header
  * THIS FILE IS ADAPTED FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/list.h
  * BY:

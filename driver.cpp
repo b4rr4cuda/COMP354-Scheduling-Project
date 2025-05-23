@@ -1,16 +1,21 @@
 /**
-* THIS FILE IS ADAPTED FOR .CPP FROM
-* https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/driver.c
-* BY:
-* - Changing includes to standardized CPP headers
-* - Including guards when running with no arguments to prevent segmentation faults
-* - Changed NULL to nullptr
-* - Rewrote loop for robustness
-*
-* Driver.cpp
-* Schedule is in the format
-* [name] [priority] [CPU burst]
-*/
+ * @file driver.cpp
+ * @brief Entry file.
+ *
+ * THIS FILE IS ADAPTED FOR .CPP FROM
+ * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/driver.c
+ * BY:
+ * - Changing includes to standardized CPP headers
+ * - Including guards when running with no arguments to prevent segmentation faults
+ * - Changed NULL to nullptr
+ * - Rewrote loop for robustness
+ * - Added consts
+ * - Joined declarations and assignments where appropriate
+ * - Added DoxyGen
+ *
+ * Schedule is in the format
+ * [name] [priority] [CPU burst]
+ */
 
 
 #include <cstdio>
@@ -23,9 +28,15 @@
 
 #define SIZE    100
 
-int main(int argc, char *argv[])
+
+/**
+ * @brief Main function
+ * @param argc
+ * @param argv
+ * @return
+ */
+int main(const int argc, char *argv[])
 {
-    FILE *in;
     char *temp;
     char task[SIZE];
 
@@ -36,7 +47,7 @@ int main(int argc, char *argv[])
     }
     // end of guard
 
-    in = fopen(argv[1],"r");
+    FILE *in = fopen(argv[1], "r");
 
     // guard to prevent errors if no file
     if (!in) {

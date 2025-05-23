@@ -1,4 +1,7 @@
 /**
+ * @file list.c
+ * @brief List implementation
+ *
  * THIS FILE IS USED AS-IS FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/list.c
  * Various list operations

@@ -1,4 +1,6 @@
 /**
+ * @file schedulers.h
+ * @brief Header file for schedulers
  * THIS FILE IS USED ADAPTED FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/schedulers.h
  * BY
