@@ -1,6 +1,8 @@
-//
-// Created by Sofya Fedkina on 25/05/2025.
-//
+/**
+* @file calc.h
+ * @brief Calculations
+ */
+
 
 #ifndef CALC_H
 #define CALC_H

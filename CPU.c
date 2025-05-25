@@ -2,9 +2,9 @@
  * @file CPU.c
  * @brief Simulating CPU implementation
  *
- * THIS FILE IS ADAPTED
+ * THIS FILE IS ADAPTED FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/CPU.c
- * "Virtual" CPU that also maintains track of system time.
+ *
  */
 
 #include <stdio.h>

@@ -2,7 +2,7 @@
  * @file driver.cpp
  * @brief Entry file.
  *
- * THIS FILE IS ADAPTEDFROM
+ * THIS FILE IS ADAPTED FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/driver.c
  * BY:
  * - Changing includes to standardized CPP headers
