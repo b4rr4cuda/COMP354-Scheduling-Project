@@ -6,6 +6,7 @@
 #include <iostream>
 #include "schedulers.h"
 #include "cpu.h"
+#include "calc.h"
 
 /**
  * @brief Add a task to the list
@@ -22,10 +23,11 @@ void Scheduler::add(const char *name, const int priority, const int burst) {
     t->end = 0;
 
     // Insert task sorted by ASCENDING time
+    // if equal time lower name executes first
 
 
     auto it = tasks.begin();
-    while (it != tasks.end() && (*it)->burst < t->burst) {
+    while (it != tasks.end() && (*it)->burst <= t->burst) {
         advance(it,1);
     }
     tasks.insert(it, t);
@@ -38,9 +40,18 @@ void Scheduler::schedule() {
     std::cout << "SJF Scheduler running!" << std::endl;
     while (!tasks.empty()) {
         Task* t = tasks.front(); // get the first-in task
-        run(t, t->burst);        // SJF: run full burst
+        t->start = current_time;
+        run(t, t->burst);        // FCFS: run full burst
         tasks.pop_front();       // remove from the list
+        current_time += t->burst;
+        t->end = current_time;
+        finishedTasks.push_back(t);
+    }
+    calculateAverages(finishedTasks);
+    // Clean up after finishedTasks operation
+    for (Task* t : finishedTasks) {
         free(t->name);
         delete t;
     }
+    finishedTasks.clear();
 }
