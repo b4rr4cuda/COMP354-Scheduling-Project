@@ -6,6 +6,7 @@
 #include <iostream>
 #include "schedulers.h"
 #include "cpu.h"
+#include "calc.h"
 
 /**
  * @brief Add a task to the list
@@ -40,9 +41,18 @@ void Scheduler::schedule() {
     std::cout << "Priority Scheduler running!" << std::endl;
     while (!tasks.empty()) {
         Task* t = tasks.front(); // get the first-in task
-        run(t, t->burst);        // Priority: run full burst
+        t->start = current_time;
+        run(t, t->burst);        // FCFS: run full burst
         tasks.pop_front();       // remove from the list
+        current_time += t->burst;
+        t->end = current_time;
+        finishedTasks.push_back(t);
+    }
+    calculateAverages(finishedTasks);
+    // Clean up after finishedTasks operation
+    for (Task* t : finishedTasks) {
         free(t->name);
         delete t;
     }
+    finishedTasks.clear();
 }
