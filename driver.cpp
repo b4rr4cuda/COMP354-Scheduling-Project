@@ -2,7 +2,7 @@
  * @file driver.cpp
  * @brief Entry file.
  *
- * THIS FILE IS ADAPTED FOR .CPP FROM
+ * THIS FILE IS ADAPTEDFROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/driver.c
  * BY:
  * - Changing includes to standardized CPP headers
@@ -12,6 +12,7 @@
  * - Added consts
  * - Joined declarations and assignments where appropriate
  * - Added DoxyGen
+ * - Refactoring
  *
  * Schedule is in the format
  * [name] [priority] [CPU burst]
@@ -19,10 +20,7 @@
 
 
 #include <cstdio>
-#include <cstdlib>
 #include <cstring>
-
-#include "task.h"
 #include "schedulers.h"
 
 #define SIZE    100

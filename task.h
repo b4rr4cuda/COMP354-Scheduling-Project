@@ -1,7 +1,7 @@
 /**
  * @file task.h
  * @brief Defining task type
- * THIS FILE IS USED AS-IS FROm
+ * THIS FILE IS ADAPTED FROM
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/task.h
  *
  * Representation of a task in the system.
