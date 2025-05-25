@@ -20,22 +20,15 @@
 
 /**
  * @class Scheduler
- * @brief Singleton scheduler class for managing tasks using std::list
+ * @brief Scheduler class for managing tasks
  */
 class Scheduler {
 public:
-    // Delete copy constructor and assignment operator
+    Scheduler() = default;
+
+    // Disable copying to avoid accidental duplication
     Scheduler(const Scheduler&) = delete;
     Scheduler& operator=(const Scheduler&) = delete;
-
-    /**
-     * @brief Get the singleton instance of Scheduler.
-     * @return Reference to the Scheduler instance.
-     */
-    static Scheduler& getInstance() {
-        static Scheduler instance;
-        return instance;
-    }
 
     /**
      * @brief Add a task to the scheduler's queue.
@@ -51,7 +44,6 @@ public:
     void schedule();
 
 private:
-    Scheduler() = default; // private constructor
     std::list<Task*> tasks{};
     std::list<Task*> finishedTasks{};
     int current_time = 0;

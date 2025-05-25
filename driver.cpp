@@ -37,6 +37,8 @@ int main(const int argc, char *argv[])
     char *temp;
     char task[SIZE];
 
+    Scheduler scheduler;
+
     // guard to prevent segfaults if no arguments provided
     if (argc < 2) {
         fprintf(stderr, "Usage: %s schedule.txt\n", argv[0]);
@@ -70,7 +72,7 @@ int main(const int argc, char *argv[])
         int priority = atoi(priority_str);
         int burst = atoi(burst_str);
 
-        Scheduler::getInstance().add(name, priority, burst);
+        scheduler.add(name, priority, burst);
 
         free(temp);
     }
@@ -78,7 +80,7 @@ int main(const int argc, char *argv[])
     fclose(in);
 
     // invoke the scheduler
-    Scheduler::getInstance().schedule();
+    scheduler.schedule();
 
     return 0;
 }
