@@ -16,6 +16,7 @@ typedef struct task {
     int tid;
     int priority;
     int burst;
+    int og_burst; //saving the original burst value
     int start;
     int end;
 } Task;

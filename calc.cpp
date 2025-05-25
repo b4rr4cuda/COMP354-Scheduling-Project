@@ -20,7 +20,7 @@ void calculateAverages(const std::list<Task*>& tasks) {
 
     for (const Task* t : tasks) {
         int turnaround = t->end;             // since arrival is 0
-        int waiting = t->end - t->burst;     // turnaround - burst
+        int waiting = t->end - t->og_burst;     // turnaround - burst
         int response = t->start;             // since arrival is 0
 
         total_turnaround += turnaround;
