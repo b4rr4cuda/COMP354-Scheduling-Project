@@ -5,10 +5,8 @@
  * https://github.com/greggagne/osc10e/blob/master/ch5/project/posix/schedulers.h
  * BY
  * - Including #pragma once
- * - Using a singleton class pattern
+ * - Using a class pattern
  * - Replacing C linked list with std::list<Task*>
- * (consulted https://www.geeksforgeeks.org/singleton-pattern-c-design-patterns/ for
- * singleton pattern)
  */
 
 #pragma once
