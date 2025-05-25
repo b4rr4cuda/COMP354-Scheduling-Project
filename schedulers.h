@@ -53,4 +53,6 @@ public:
 private:
     Scheduler() = default; // private constructor
     std::list<Task*> tasks{};
+    std::list<Task*> finishedTasks{};
+    int current_time = 0;
 };

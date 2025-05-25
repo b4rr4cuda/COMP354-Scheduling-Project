@@ -18,6 +18,8 @@ void Scheduler::add(const char *name, const int priority, const int burst) {
     t->name = strdup(name); // make a deep copy for safety
     t->priority = priority;
     t->burst = burst;
+    t->start = 0;
+    t->end = 0;
     tasks.push_back(t); // RR: add to the back of the list
 }
 

@@ -7,6 +7,7 @@
 #include <iostream>
 #include "schedulers.h"
 #include "cpu.h"
+#include "calc.h"
 
 /**
  * @brief Add a task to the list
@@ -19,6 +20,8 @@ void Scheduler::add(const char *name, const int priority, const int burst) {
     t->name = strdup(name); // make a deep copy for safety
     t->priority = priority;
     t->burst = burst;
+    t->start = 0;
+    t->end = 0;
     tasks.push_back(t); // FCFS: add to the back of the list
 }
 
@@ -29,12 +32,21 @@ void Scheduler::schedule() {
     std::cout << "FCFS Scheduler running!" << std::endl;
     while (!tasks.empty()) {
         Task* t = tasks.front(); // get the first-in task
+        t->start = current_time;
         run(t, t->burst);        // FCFS: run full burst
         tasks.pop_front();       // remove from the list
-
+        current_time += t->burst;
+        t->end = current_time;
+        finishedTasks.push_back(t);
+    }
+    calculateAverages(finishedTasks);
+    // Clean up after finishedTasks operation
+    for (Task* t : finishedTasks) {
         free(t->name);
         delete t;
     }
+    finishedTasks.clear();
+
 }
 
 

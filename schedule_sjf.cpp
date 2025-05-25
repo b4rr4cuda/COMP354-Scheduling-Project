@@ -18,6 +18,8 @@ void Scheduler::add(const char *name, const int priority, const int burst) {
     t->name = strdup(name);
     t->priority = priority;
     t->burst = burst;
+    t->start = 0;
+    t->end = 0;
 
     // Insert task sorted by ASCENDING time
 
